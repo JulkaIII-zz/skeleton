@@ -1,9 +1,20 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin'); // generate its own index.html file, replaces our.
+const CleanWebpackPlugin = require('clean-webpack-plugin');// cleans a dist folder before build
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    app: './src/index.js',
+    print: './src/print.js'
+  },
+  plugins: [
+    new CleanWebpackPlugin(['dist']),
+    new HtmlWebpackPlugin({
+      title: 'Output Management'
+    })
+  ],
   output: {
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist')
   }//,
   // module: {
