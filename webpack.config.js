@@ -7,6 +7,10 @@ module.exports = {
     app: './src/index.js',
     print: './src/print.js'
   },
+  devtool: 'inline-source-map', // maps your compiled code back to your original source code. If an error originates from b.js, the source map will tell you exactly that.
+  devServer: {
+    contentBase: './dist' //This tells webpack-dev-server to serve the files from the dist directory on localhost:8080.
+  },
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
@@ -15,7 +19,8 @@ module.exports = {
   ],
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/' // The publicPath will be used within our server script as well in order to make sure files are served correctly on http://localhost:4000
   }//,
   // module: {
   //   rules: [
