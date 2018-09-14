@@ -1,17 +1,22 @@
 {
   "name": "skeleton",
+  "sideEffects": [
+    "./src/some-side-effectful-file.js",
+    "*.css"
+  ],
   "version": "1.0.0",
   "description": "webpack configs",
   "private": true,
   "dependencies": {
     "lodash": "^4.17.10",
+    "mini-css-extract-plugin": "^0.4.2",
     "webpack-cli": "^3.1.0"
   },
   "scripts": {
+    "start": "webpack-dev-server --open --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
     "watch": "webpack --watch",
-    "start": "webpack-dev-server --open",
     "server": "node server.js"
   },
   "devDependencies": {
@@ -27,6 +32,7 @@
     "webpack": "^4.17.2",
     "webpack-dev-middleware": "^3.2.0",
     "webpack-dev-server": "^3.1.7",
+    "webpack-merge": "^4.1.4",
     "xml-loader": "^1.2.1"
   },
   "repository": {
