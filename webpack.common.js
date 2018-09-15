@@ -9,12 +9,12 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
-        title: 'Output Management'
+        title: 'Caching' // Cashing is needed to ensure files produced by webpack compilation can remain cached unless their contents has changed.
         })
     ],
     output: {
         filename: '[name].bundle.js',
-        path: path.resolve(__dirname, 'dist'),
+        filename: '[name].[contenthash].js',
         publicPath: '/' // The publicPath will be used within our server script as well in order to make sure files are served correctly on http://localhost:4000
     }
 };
